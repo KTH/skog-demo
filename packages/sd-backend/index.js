@@ -1,6 +1,8 @@
 const { initializeLogger, skogMiddleware, default: log } = require("skog");
 const express = require("express");
 const sessionMiddleware = require("express-session");
+const path = require("path");
+
 const handler = require("./handler");
 const customMiddleware = require("./custom-middleware");
 
@@ -19,7 +21,7 @@ app.get("/skog-demo/api/skog-middleware", skogMiddleware, handler);
 app.get("/skog-demo/api/special", customMiddleware, handler);
 app.use(
   "/skog-demo",
-  express.static(path.join(__dirname, "../../sd-frontend/dist"))
+  express.static(path.join(__dirname, "../sd-frontend/dist"))
 );
 
 initializeLogger({
