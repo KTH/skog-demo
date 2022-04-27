@@ -22,10 +22,10 @@ RUN npm ci --production --unsafe-perm
 
 FROM node:16-alpine AS production
 WORKDIR /usr/src/app
-COPY --from=frontend /usr/src/app/sd-frontend/dist sd-frontend/dist
-COPY --from=backend /usr/src/app/sd-backend/node_modules sd-backend/node_modules
+COPY --from=frontend /usr/src/app/sd-frontend/dist packages/sd-frontend/dist
+COPY --from=backend /usr/src/app/sd-backend/node_modules packages/sd-backend/node_modules
 COPY . .
 
 EXPOSE 3000
 
-CMD cd backend && node index.js
+CMD cd packages/sd-backend && node index.js
