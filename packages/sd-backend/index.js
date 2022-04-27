@@ -1,4 +1,9 @@
-const { initializeLogger, skogMiddleware, default: log } = require("skog");
+const {
+  initializeLogger,
+  skogMiddleware,
+  default: log,
+  setFields,
+} = require("skog");
 const express = require("express");
 const sessionMiddleware = require("express-session");
 const path = require("path");
@@ -24,9 +29,8 @@ app.use(
   express.static(path.join(__dirname, "../sd-frontend/dist"))
 );
 
-initializeLogger({
-  app: "skog-demo",
-});
+initializeLogger();
+setFields({ app: "skog-demo" });
 
 app.listen(3000, () => {
   log.info("Starting server");
