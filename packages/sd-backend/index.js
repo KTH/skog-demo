@@ -21,7 +21,14 @@ app.use(
   })
 );
 
-app.get("/skog-demo/api/no-middleware", handler);
+app.get(
+  "/skog-demo/api/no-middleware",
+  function logAll(req, res, next) {
+    log.info(req.headers, "HEADERS");
+    next();
+  },
+  handler
+);
 app.get("/skog-demo/api/skog-middleware", skogMiddleware, handler);
 app.get("/skog-demo/api/special", customMiddleware, handler);
 app.use(
