@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "lerna run dev --parallel --stream",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
